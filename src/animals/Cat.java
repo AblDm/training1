@@ -3,13 +3,15 @@ package animals;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-public class Cat {
+public class Cat extends Pet {
     public Breed setBreed;
     private String name;
     private int birthYear;
     public Cat [] friends;
 
     private static int count;
+
+
 
     public static int getCount() {
         return count;
@@ -76,13 +78,15 @@ public class FavToy {
         return Cat.this.name;
     }
 }
-    public Cat(FavToy toy) {
-        this.toy = toy;
-    }
+
 
     private FavToy toy;
     public FavToy getToy() {
         return toy;
+    }
+    public Cat(FavToy toy) {
+        super (toy.getName ());
+        this.toy = toy;
     }
 
     public void setToy(FavToy toy) {
@@ -98,18 +102,24 @@ public class FavToy {
         return breed;
     }
 
-//
+    @Override
+    public void talk() {
+        meow ();
+    }
+
+    @Override
+    public void eat() {
+        System.out.println ("насыпать корм для котов");
+        System.out.println ("налить воду");
+    }
+
+    //
     public Cat (String name){
-        this(name, LocalDate.now ().getYear ());
+        this(name, 0);
 
     }
     public Cat (String name, int age){
-
-        if (age >=0) {
-            this.birthYear= LocalDate.now ().getYear () - age;
-        }
-        else  {this.birthYear= Math.abs(age);}
-        this.name = name;
+        super(name,age);
         friends = new Cat[0];
         count++;
     }
@@ -117,7 +127,7 @@ public class FavToy {
     public void meow() {
         System.out.println ("мяу");
         System.out.println ("мне "+ getAge () + " лет");
-        System.out.println ("меня  зовут " + name);
+        System.out.println ("меня  зовут " + getName ());
     }
    public Cat[] getFriends(){
         if (friends == null) {
@@ -139,10 +149,7 @@ public class FavToy {
         return LocalDate.now ().getYear () - birthYear;
     }
     public void setName(String name) {
-        if (name==null && name.isEmpty () && name.isBlank ()){
         this.name = name;
-    } else {
-            this.name = "кот";
-        }
     }
+
 }
