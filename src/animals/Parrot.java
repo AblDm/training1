@@ -1,29 +1,48 @@
 package animals;
 
-public class Parrot {
+import com.sun.source.tree.LiteralTree;
+
+public class Parrot extends Pet {
     private String name;
     private int birthYear;
     private boolean talking;
     private String breed;
 
     public Parrot(String name) {
-        this.name = name;
+        super(name);
     }
 
     public void talk(){
         System.out.println ("Hello!");
     }
 
+    public void talk(String word)
+    {System.out.println ("Hello!");
+        System.out.println (word);}
+
+
+    public void talk(String... words) {
+        talk ();
+        for (String word : words) {
+            System.out.println (word);
+        }
+    }
+    @Override
+    public void eat() {
+
+    }
+
     public Parrot(String name, int birthYear) {
-        this.name = name;
-        this.birthYear = birthYear;
+        super (name,birthYear);
+
     }
 
+   @Override
     public String getName() {
-        return name;
+        return name ;
     }
 
-    public void setName(String name) {
+    public final void setName(String name) {
         this.name = name;
     }
 
@@ -45,6 +64,16 @@ public class Parrot {
 
     public String getBreed() {
         return breed;
+    }
+
+    @Override
+    public String toString() {
+        return "Parrot{" +
+                "name='" + name + '\'' +
+                ", birthYear=" + birthYear +
+                ", talking=" + talking +
+                ", breed='" + breed + '\'' +
+                '}';
     }
 
     public void setBreed(String breed) {

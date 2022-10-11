@@ -3,11 +3,11 @@ package animals;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-public class Cat extends Pet {
+public class Cat extends Pet implements Trained {
     public Breed setBreed;
     private String name;
     private int birthYear;
-    public Cat [] friends;
+    public Pet[] friends;
 
     private static int count;
 
@@ -15,6 +15,26 @@ public class Cat extends Pet {
 
     public static int getCount() {
         return count;
+    }
+
+    @Override
+    public String[] getTrainedCommands() {
+        return new String[0];
+    }
+
+    @Override
+    public String[] getAllCommands() {
+        return new String[0];
+    }
+
+    @Override
+    public void doCommand(String command) {
+
+    }
+
+    @Override
+    public void train(String command) {
+
     }
 
     public static class Breed{
@@ -34,7 +54,7 @@ public class Cat extends Pet {
         public String getName() {
             return name;
         }
-    public void setName(String name) {
+    public final void setName(String name) {
         this.name = name;
     }
 
@@ -64,6 +84,7 @@ public class FavToy {
     public String getName() {
         return name;
     }
+
 
     public FavToy(String name, String type) {
         this.name = name;
@@ -120,7 +141,7 @@ public class FavToy {
     }
     public Cat (String name, int age){
         super(name,age);
-        friends = new Cat[0];
+        friends = new Pet[0];
         count++;
     }
 
@@ -129,16 +150,18 @@ public class FavToy {
         System.out.println ("мне "+ getAge () + " лет");
         System.out.println ("меня  зовут " + getName ());
     }
-   public Cat[] getFriends(){
+   public Pet[] getFriends(){
         if (friends == null) {
-            friends = new Cat[0];
+            friends = new Pet[0];
         }
         return friends;
     }
-    public void addFriend(Cat friend) {
+    public void addFriend(Pet friend) {
 
         this.friends = Arrays.copyOf (getFriends (), getFriends ().length + 1 );
         this.friends[this.friends.length-1] = friend;
+
+        System.out.println (getName () + " подружился с " + friend.getName ());
     }
 
     public String getName() {

@@ -67,4 +67,7 @@ public abstract class Pet  {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public void voice() {
+    }
 }

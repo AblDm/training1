@@ -1,0 +1,8 @@
+<root>
+    <item name='java.time.LocalDate int getYear()'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="2022"/>
+            <val name="to" val="2022"/>
+        </annotation>
+    </item>
+</root>
